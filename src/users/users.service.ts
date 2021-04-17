@@ -21,6 +21,7 @@ export class UsersService {
     if (user) {
       throw new ConflictException('User already exists');
     }
+
     return this.usersRepository.insertAndFetch(payload);
   }
 
@@ -33,8 +34,13 @@ export class UsersService {
     return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: number, payload: UpdateUserDto): Promise<User> {
+    const user = await this.usersRepository.patchAndFetchById(id, payload);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    return user;
   }
 
   remove(id: number) {

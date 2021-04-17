@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { UpdateUserDto } from 'src/users/dto/update-user.dto';
 import { User } from 'src/users/entities/user.entity';
 import { UserModel } from '../models/user.model';
 
@@ -19,5 +20,9 @@ export class UsersRepository {
 
   findById(id: number): Promise<User> {
     return UserModel.query().findById(id);
+  }
+
+  patchAndFetchById(id: number, payload: UpdateUserDto): Promise<User> {
+    return UserModel.query().patchAndFetchById(id, payload);
   }
 }
