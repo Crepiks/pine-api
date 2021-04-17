@@ -26,8 +26,13 @@ export class ImagesService {
     return this.imagesRepository.insertAndFetchImage(payload);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} image`;
+  async findOne(id: number): Promise<Image> {
+    const image = await this.imagesRepository.findById(id);
+    if (!image) {
+      throw new NotFoundException('Image not found');
+    }
+
+    return image;
   }
 
   update(id: number, updateImageDto: UpdateImageDto) {

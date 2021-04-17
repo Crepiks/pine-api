@@ -14,4 +14,8 @@ export class ImagesRepository {
   insertAndFetchImage(payload: CreateImageDto): Promise<Image> {
     return ImageModel.query().insertAndFetch(payload);
   }
+
+  findById(id: number): Promise<Image> {
+    return ImageModel.query().findById(id).withGraphFetched('user');
+  }
 }

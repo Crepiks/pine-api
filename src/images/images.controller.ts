@@ -30,8 +30,10 @@ export class ImagesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.imagesService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return {
+      image: await this.imagesService.findOne(+id),
+    };
   }
 
   @Patch(':id')
