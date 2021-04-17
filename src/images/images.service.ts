@@ -44,7 +44,10 @@ export class ImagesService {
     return image;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} image`;
+  async remove(id: number) {
+    const rowsDeleted = await this.imagesRepository.deleteById(id);
+    if (!rowsDeleted) {
+      throw new NotFoundException('Image not found');
+    }
   }
 }

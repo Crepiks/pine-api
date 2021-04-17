@@ -23,4 +23,8 @@ export class ImagesRepository {
   patchAndFetchById(id: number, payload: UpdateImageDto): Promise<Image> {
     return ImageModel.query().patchAndFetchById(id, payload);
   }
+
+  deleteById(id: number): Promise<number> {
+    return ImageModel.query().deleteById(id);
+  }
 }
