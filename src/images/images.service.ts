@@ -35,8 +35,13 @@ export class ImagesService {
     return image;
   }
 
-  update(id: number, updateImageDto: UpdateImageDto) {
-    return `This action updates a #${id} image`;
+  async update(id: number, payload: UpdateImageDto) {
+    const image = await this.imagesRepository.patchAndFetchById(id, payload);
+    if (!image) {
+      throw new NotFoundException('Image not found');
+    }
+
+    return image;
   }
 
   remove(id: number) {

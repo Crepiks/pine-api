@@ -37,8 +37,13 @@ export class ImagesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateImageDto: UpdateImageDto) {
-    return this.imagesService.update(+id, updateImageDto);
+  async update(
+    @Param('id') id: string,
+    @Body() updateImageDto: UpdateImageDto,
+  ) {
+    return {
+      image: await this.imagesService.update(+id, updateImageDto),
+    };
   }
 
   @Delete(':id')

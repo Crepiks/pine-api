@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateImageDto } from 'src/images/dto/create-image.dto';
+import { UpdateImageDto } from 'src/images/dto/update-image.dto';
 import { Image } from 'src/images/entities/image.entity';
 import { ImageModel } from '../models/image.model';
 
@@ -17,5 +18,9 @@ export class ImagesRepository {
 
   findById(id: number): Promise<Image> {
     return ImageModel.query().findById(id).withGraphFetched('user');
+  }
+
+  patchAndFetchById(id: number, payload: UpdateImageDto): Promise<Image> {
+    return ImageModel.query().patchAndFetchById(id, payload);
   }
 }
