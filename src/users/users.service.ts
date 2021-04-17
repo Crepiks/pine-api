@@ -25,8 +25,8 @@ export class UsersService {
     return this.usersRepository.insertAndFetch(payload);
   }
 
-  async findOne(id: number): Promise<User> {
-    const user = await this.usersRepository.findById(id);
+  async findOne(email: string): Promise<User> {
+    const user = await this.usersRepository.findByEmail(email);
     if (!user) {
       throw new NotFoundException('User not found');
     }

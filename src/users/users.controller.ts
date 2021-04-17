@@ -29,10 +29,10 @@ export class UsersController {
     };
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
+  @Get(':email')
+  async findOne(@Param('email') email: string) {
     return {
-      user: await this.usersService.findOne(+id),
+      user: await this.usersService.findOne(email),
     };
   }
 
