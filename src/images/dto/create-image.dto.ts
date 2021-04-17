@@ -1,1 +1,4 @@
-export class CreateImageDto {}
+export class CreateImageDto {
+  userId: number;
+  path: string;
+}

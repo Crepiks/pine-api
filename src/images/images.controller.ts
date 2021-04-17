@@ -23,8 +23,10 @@ export class ImagesController {
   }
 
   @Post()
-  create(@Body() createImageDto: CreateImageDto) {
-    return this.imagesService.create(createImageDto);
+  async create(@Body() createImageDto: CreateImageDto) {
+    return {
+      image: await this.imagesService.create(createImageDto),
+    };
   }
 
   @Get(':id')

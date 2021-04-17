@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreateImageDto } from 'src/images/dto/create-image.dto';
 import { Image } from 'src/images/entities/image.entity';
 import { ImageModel } from '../models/image.model';
 
@@ -8,5 +9,9 @@ export class ImagesRepository {
     return ImageModel.query()
       .orderBy('createdAt', 'asc')
       .withGraphFetched('user');
+  }
+
+  insertAndFetchImage(payload: CreateImageDto): Promise<Image> {
+    return ImageModel.query().insertAndFetch(payload);
   }
 }
