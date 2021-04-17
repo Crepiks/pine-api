@@ -6,7 +6,13 @@ import { ImageModel } from '../models/image.model';
 
 @Injectable()
 export class ImagesRepository {
-  getImages(): Promise<Image[]> {
+  async getImages(userId?: number): Promise<Image[]> {
+    if (userId) {
+      return ImageModel.query()
+        .where({ userId })
+        .orderBy('createdAt', 'asc')
+        .withGraphFetched('user');
+    }
     return ImageModel.query()
       .orderBy('createdAt', 'asc')
       .withGraphFetched('user');

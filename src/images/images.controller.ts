@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { ImagesService } from './images.service';
 import { CreateImageDto } from './dto/create-image.dto';
@@ -16,9 +17,9 @@ export class ImagesController {
   constructor(private readonly imagesService: ImagesService) {}
 
   @Get()
-  async findAll() {
+  async findAll(@Query('userId') userId: number) {
     return {
-      images: await this.imagesService.findAll(),
+      images: await this.imagesService.findAll(userId),
     };
   }
 

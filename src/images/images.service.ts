@@ -12,8 +12,8 @@ export class ImagesService {
     private readonly usersRepository: UsersRepository,
   ) {}
 
-  findAll(): Promise<Image[]> {
-    return this.imagesRepository.getImages();
+  async findAll(userId?: number): Promise<Image[]> {
+    return this.imagesRepository.getImages(userId);
   }
 
   async create(payload: CreateImageDto): Promise<Image> {
