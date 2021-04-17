@@ -25,4 +25,8 @@ export class UsersRepository {
   patchAndFetchById(id: number, payload: UpdateUserDto): Promise<User> {
     return UserModel.query().patchAndFetchById(id, payload);
   }
+
+  deleteById(id: number): Promise<number> {
+    return UserModel.query().deleteById(id);
+  }
 }
