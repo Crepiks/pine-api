@@ -9,8 +9,8 @@ export async function up(knex: Knex): Promise<void> {
     table.float('lat').nullable();
     table.float('lon').nullable();
     table.string('city').nullable();
-    table.string("deviceModel").nullable();
-    table.timestamp('createdAt').defaultTo(knex.fn.now());
+    table.string('deviceModel').nullable();
+    table.timestamp('createdAt').nullable();
   });
 }
 
