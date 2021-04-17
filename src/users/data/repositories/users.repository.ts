@@ -16,4 +16,8 @@ export class UsersRepository {
   findByEmail(email: string): Promise<User> {
     return UserModel.query().findOne({ email });
   }
+
+  findById(id: number): Promise<User> {
+    return UserModel.query().findById(id);
+  }
 }
