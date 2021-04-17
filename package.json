@@ -2,7 +2,7 @@
   "name": "pine-api",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Not So Serious Team",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -22,8 +22,13 @@
   },
   "dependencies": {
     "@nestjs/common": "^7.6.15",
+    "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.6.15",
     "@nestjs/platform-express": "^7.6.15",
+    "dotenv": "^8.2.0",
+    "knex": "^0.21.19",
+    "mysql2": "^2.2.5",
+    "objection": "^2.2.15",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6"
